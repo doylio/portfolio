@@ -1,23 +1,33 @@
-import React from 'react';
+import React from "react";
 
-import { Section, SectionText, SectionTitle, Link } from '../../styles/GlobalComponents';
-import Button from '../../styles/GlobalComponents/Button';
-import { LeftSection } from './HeroStyles';
+import {
+  Section,
+  SectionText,
+  SectionTitle,
+  Link,
+} from "../../styles/GlobalComponents";
+import Button from "../../styles/GlobalComponents/Button";
+import { LeftSection } from "./HeroStyles";
 
 const Hero = (props) => (
   <>
     <Section row nopadding>
       <LeftSection>
         <SectionTitle main center>
-          Hey there,
+          Building the future of the web
         </SectionTitle>
         <SectionText>
-          Hey there, This is Vipul Jha aka lordarcadius. I am an Android & Flutter developer who also works on ROMs, Kernels, & Scripts.
+          My name is Shawn Doyle, aka Doylio. I am a web3 developer committed to
+          using the crypto technologies to build a better internet.
         </SectionText>
-        <Button onClick={(e) => {
-          e.preventDefault();
-          window.location.href = '/files/resume.pdf';
-        }}>My Resume</Button>
+        <Button
+          onClick={(e) => {
+            e.preventDefault();
+            window.location.href = "/files/resume.pdf";
+          }}
+        >
+          My Resume
+        </Button>
       </LeftSection>
     </Section>
   </>
