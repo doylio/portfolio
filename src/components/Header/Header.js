@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 import {
   AiFillGithub,
-  AiFillInstagram,
+  AiFillMail,
   AiFillLinkedin,
   AiFillTwitterCircle,
 } from "react-icons/ai";
@@ -38,18 +38,21 @@ const Header = () => (
           <NavLink>Skills</NavLink>
         </Link>
       </li>
-      <li>
+      {/* <li>
         <Link href="#about">
           <NavLink>About</NavLink>
         </Link>
-      </li>
+      </li> */}
       <li>
-        <a href="https://medium.com/@doylio">
-          <NavLink>Blog</NavLink>
-        </a>
+        <Link href="#posts">
+          <NavLink>Posts</NavLink>
+        </Link>
       </li>
     </Div2>
     <Div3>
+      <SocialIcons href="mailto:me@shawnrobertdoyle.com">
+        <AiFillMail size="3rem" />
+      </SocialIcons>
       <SocialIcons href="https://github.com/doylio">
         <AiFillGithub size="3rem" />
       </SocialIcons>

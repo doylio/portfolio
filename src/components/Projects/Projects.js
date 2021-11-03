@@ -1,8 +1,25 @@
-import React from 'react';
+import React from "react";
 
-import { BlogCard, CardInfo, ExternalLinks, GridContainer, HeaderThree, Hr, Tag, TagList, TitleContent, UtilityList, Img } from './ProjectsStyles';
-import { Section, SectionDivider, SectionTitle } from '../../styles/GlobalComponents';
-import { projects } from '../../constants/constants';
+import {
+  BlogCard,
+  CardInfo,
+  ExternalLinks,
+  GridContainer,
+  HeaderThree,
+  Hr,
+  Tag,
+  TagList,
+  TitleContent,
+  UtilityList,
+  Img,
+  Footer,
+} from "./ProjectsStyles";
+import {
+  Section,
+  SectionDivider,
+  SectionTitle,
+} from "../../styles/GlobalComponents";
+import { projects } from "../../constants/constants";
 
 const Projects = () => (
   <Section id="projects">
@@ -28,9 +45,11 @@ const Projects = () => (
               </TagList>
             </div>
             <UtilityList>
-              <ExternalLinks href={p.visit}>Live Preview</ExternalLinks>
-              <ExternalLinks href={p.source}>Source Code</ExternalLinks>
+              {p.buttons.map((button) => (
+                <ExternalLinks href={button.url}>{button.text}</ExternalLinks>
+              ))}
             </UtilityList>
+            <Footer>{p.footer}</Footer>
           </BlogCard>
         );
       })}
