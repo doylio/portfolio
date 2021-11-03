@@ -1,14 +1,18 @@
 {
-  "name": "portfolio_nextjs",
+  "name": "doylio-portfolio",
+  "homepage": "http://doyl.io/",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build && next export",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d out",
     "start": "next start"
   },
   "dependencies": {
     "@types/styled-components": "^5.1.15",
+    "gh-pages": "^3.2.3",
     "next": "10.2.3",
     "ngrok": "^4.0.1",
     "particles.js": "^2.0.0",
