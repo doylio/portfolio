@@ -18,8 +18,21 @@
 
   --dark: #242424;
 
-  --g1: rgb(208, 58, 231);
-  --g2: rgb(238, 133, 29);
+  --bg1: rgb(208, 58, 231);
+  --bg2: rgb(238, 133, 29);
+
+  --link: rgb(21, 25, 153);
+  --text-light: rgba(255, 255, 255, 0.87);
+  --text-dark: rgba(0, 0, 0, 0.87);
+  --alt-text-light: #666;
+  --alt-text-dark: #333;
+  --cell: rgb(243, 158, 185);
+  --cell-border: #333;
+  --action: rgb(36, 163, 49);
+
+
+  --github: #25292E;
+  --linkedin: #0077B5;
 
 }
   
@@ -36,6 +49,6 @@
 
 body {
   animation: background-pan 15s linear infinite;
-  background: linear-gradient(to right, var(--g1), var(--g2), var(--g1));
+  background: linear-gradient(to right, var(--bg1), var(--bg2), var(--bg1));
   background-size: 200%;
 }
