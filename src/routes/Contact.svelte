@@ -1,28 +1,73 @@
 <script lang="ts">
 	import LinkedIn from '../assets/linkedin-logo.png';
 	import Github from '../assets/github-logo.png';
+	import SectionTitle from './SectionTitle.svelte';
+	import { toast } from '@zerodevx/svelte-toast';
+
+	let messageSent = false;
+
+	async function handleSubmit(event: any) {
+		const formData = new FormData(event.target as HTMLFormElement);
+		const request = new XMLHttpRequest();
+		request.open('POST', '/?/message');
+		request.onerror = () => {
+			errorToast();
+		};
+		request.onload = () => {
+			if (request.status === 200) {
+				messageSent = true;
+			} else {
+				errorToast();
+			}
+		};
+		request.send(formData);
+	}
+
+	function errorToast() {
+		toast.push('Error sending message', {
+			theme: {
+				'--toastColor': 'mintcream',
+				'--toastBackground': '#e74c3c',
+				'--toastBarBackground': '#c0392b'
+			},
+			duration: 5000
+		});
+	}
 </script>
 
 <div class="container">
+	<SectionTitle>Contact</SectionTitle>
+
 	<div class="button-box">
-		<button class="github">
+		<a class="github" href="https://github.com/doylio" target="_blank" rel="noreferrer">
 			<img src={Github} alt="Github" />
 			Github
-		</button>
-		<button class="linkedin">
+		</a>
+		<a
+			class="linkedin"
+			href="https://www.linkedin.com/in/shawnrobertdoyle/"
+			target="_blank"
+			rel="noreferrer"
+		>
 			<img src={LinkedIn} alt="LinkedIn" />
 			LinkedIn
-		</button>
+		</a>
 	</div>
 
-	<div class="text-divider">OR</div>
+	<br />
 
-	<form>
-		<input placeholder="Name" name="name" required />
-		<input placeholder="Email" name="email" type="email" required />
-		<textarea placeholder="Message" required />
-		<button type="submit"> Send </button>
-	</form>
+	<div>
+		<div class="subtitle" class:hidden={messageSent}>Send a message</div>
+
+		<form on:submit|preventDefault={handleSubmit} class:hidden={messageSent}>
+			<input placeholder="Name" name="name" required />
+			<input placeholder="Email" name="email" type="email" required />
+			<textarea placeholder="Message" name="message" required />
+			<button type="submit"> Send </button>
+		</form>
+
+		<div class="subtitle centered" class:hidden={!messageSent}>Thanks for the message! :)</div>
+	</div>
 </div>
 
 <style lang="scss">
@@ -37,7 +82,9 @@
 		gap: 10px;
 		flex-wrap: wrap;
 
-		button {
+		a {
+			text-decoration: none;
+			font-family: 'Roboto', sans-serif;
 			flex: 1;
 			min-width: 200px;
 			color: var(--text-light);
@@ -70,32 +117,22 @@
 		}
 	}
 
-	.text-divider {
-		margin: 30px 0;
-		--text-divider-gap: 1rem;
-		display: flex;
-		align-items: center;
-		font-size: 1rem;
-		text-transform: uppercase;
-		letter-spacing: 0.1em;
-		line-height: 1rem;
-		font-family: Arial, Helvetica, sans-serif;
+	.subtitle {
+		text-align: center;
+		font-size: 1.5rem;
+		margin: 20px 0;
+	}
 
-		&::before,
-		&::after {
-			content: '';
-			height: 1px;
-			background-color: var(--text-light);
-			flex-grow: 1;
-		}
+	.centered {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 100%;
+	}
 
-		&::before {
-			margin-right: var(--text-divider-gap);
-		}
-
-		&::after {
-			margin-left: var(--text-divider-gap);
-		}
+	.hidden {
+		visibility: hidden;
 	}
 
 	form {
@@ -136,7 +173,7 @@
 			border: none;
 			border-radius: 5px;
 			cursor: pointer;
-			transition: all 0.2s ease-in-out;
+			transition: filter 0.2s ease-in-out;
 			background-color: var(--action);
 
 			&:hover {

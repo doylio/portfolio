@@ -2,6 +2,7 @@
 	import ReactApolloImage from '../assets/react-apollo.jpeg';
 	import LaptopImage from '../assets/laptop.jpeg';
 	import NftImage from '../assets/nft.jpeg';
+	import SectionTitle from './SectionTitle.svelte';
 
 	const articles = [
 		{
@@ -32,6 +33,7 @@
 </script>
 
 <div>
+	<SectionTitle>Writing</SectionTitle>
 	<div class="articles">
 		{#each articles as article}
 			<a class="article" href={article.url} target="__blank">
@@ -47,11 +49,6 @@
 </div>
 
 <style lang="scss">
-	h1 {
-		font-size: 2.5rem;
-		text-align: center;
-	}
-
 	.articles {
 		display: flex;
 		flex-direction: column;

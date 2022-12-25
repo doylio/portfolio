@@ -18,6 +18,7 @@
 	import FoundryLogo from '../assets/foundry-logo.png';
 	import HardhatLogo from '../assets/hardhat-logo.png';
 	import ReduxLogo from '../assets/redux-logo.png';
+	import SectionTitle from './SectionTitle.svelte';
 
 	let label = 'And More...';
 
@@ -61,7 +62,9 @@
 </script>
 
 <div class="container">
-	<h2>
+	<SectionTitle>Skills</SectionTitle>
+
+	<h3>
 		{#each skillTags as tag}
 			<span on:mouseenter={() => (activeTag = tag.value)} on:mouseleave={() => (activeTag = '')}
 				>{tag.name}</span
@@ -70,7 +73,7 @@
 				{` ⸱ `}
 			{/if}
 		{/each}
-	</h2>
+	</h3>
 
 	<div class="skills-container">
 		{#each skills as skill, i}
@@ -84,7 +87,7 @@
 			/>
 		{/each}
 	</div>
-	<h1>{label}</h1>
+	<h2>{label}</h2>
 </div>
 
 <style lang="scss">
@@ -96,6 +99,12 @@
 	}
 
 	h2 {
+		font-size: 1.5rem;
+		color: var(--text-light);
+		text-align: center;
+	}
+
+	h3 {
 		font-size: 1.7rem;
 		color: var(--text-dark);
 		text-align: center;
@@ -117,7 +126,7 @@
 		flex-wrap: wrap;
 
 		img {
-			height: 100px;
+			height: calc(4vh + 4vw);
 			padding: 10px;
 			transition: transform 0.2s ease-in-out;
 

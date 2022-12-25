@@ -1,9 +1,22 @@
 <script lang="ts">
 	import anime from 'animejs/lib/anime.es.js';
 	import { browser } from '$app/environment';
-	import Content from './Content.svelte';
+	import About from './About.svelte';
+	import Skills from './Skills.svelte';
+	import MyWork from './MyWork.svelte';
+	import Contact from './Contact.svelte';
+	import Writing from './Writing.svelte';
 
-	export let isOpen = false;
+	if (browser) {
+		// Fade in title
+		anime({
+			targets: '.title',
+			opacity: 1,
+			duration: 1800
+		});
+	}
+
+	let isOpen = false;
 
 	let rows = 0;
 	let columns = 0;
@@ -17,11 +30,6 @@
 	if (browser) {
 		handleResize();
 		window.addEventListener('resize', handleResize);
-		anime({
-			targets: '.title',
-			opacity: 1,
-			duration: 1800
-		});
 	}
 
 	function handleTileClick(index: number) {
@@ -63,7 +71,55 @@
 			isOpen = true;
 		}
 	}
+
+	const navItems = [
+		{ name: 'About', href: '#about', component: About },
+		{ name: 'Skills', href: '#skills', component: Skills },
+		{ name: 'My Work', href: '#my-work', component: MyWork },
+		{ name: 'Writing', href: '#writing', component: Writing },
+		{ name: 'Contact', href: '#contact', component: Contact }
+	];
+
+	let activeIndex = 0;
+	if (browser) {
+		updateActiveIndex();
+		scrollToIndex(activeIndex);
+	}
+
+	function updateActiveIndex() {
+		const hash = window.location.hash;
+		const index = navItems.findIndex((item) => item.href === hash);
+		if (index !== -1) {
+			activeIndex = index;
+		}
+	}
+
+	function onSelectActiveIndex(index: number) {
+		activeIndex = index;
+		window.location.hash = navItems[index].href;
+		scrollToIndex(index);
+	}
+
+	function scrollToIndex(index: number) {
+		const slider = document.querySelector('.content-slider');
+		if (slider) {
+			slider.scrollTo({
+				top: index * window.innerHeight,
+				behavior: 'smooth'
+			});
+		}
+	}
+
+	function handleScroll(ev: Event) {
+		const slider = ev.target as HTMLElement;
+		const index = Math.round(slider.scrollTop / window.innerHeight);
+		if (index !== activeIndex) {
+			activeIndex = index;
+		}
+	}
 </script>
+
+<svelte:window on:hashchange={updateActiveIndex} />
 
 <div class="title">
 	<h1>Shawn Robert Doyle</h1>
@@ -77,7 +133,27 @@
 </div>
 
 <main>
-	<Content />
+	<nav>
+		<ul>
+			{#each navItems as item, i}
+				<li
+					class:selected={activeIndex == i}
+					on:click={() => onSelectActiveIndex(i)}
+					on:keypress={() => onSelectActiveIndex(i)}
+				>
+					{item.name}
+				</li>
+			{/each}
+		</ul>
+	</nav>
+
+	<div class="content-slider" on:scroll={handleScroll}>
+		{#each navItems as item}
+			<div class="slider-item">
+				<svelte:component this={item.component} />
+			</div>
+		{/each}
+	</div>
 </main>
 
 <style lang="scss">
@@ -130,5 +206,63 @@
 		right: 0;
 		bottom: 0;
 		opacity: 0;
+
+		display: grid;
+		grid-template-columns: 2fr 5fr;
+		grid-template-rows: 1fr;
+		grid-gap: 15vw;
+	}
+
+	nav {
+		padding: 25vh 0 0 0;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
+
+		h3 {
+			font-family: 'Gravitas One';
+			font-size: 2rem;
+			font-weight: 400;
+		}
+
+		ul {
+			font-family: 'Gayathri', 'sans-serif';
+			pointer-events: all;
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			font-size: 1.8rem;
+			font-weight: 300;
+			line-height: 1.5;
+			text-align: right;
+
+			li {
+				margin: 0 0 1.5rem 0;
+				transition: transform 0.2s ease-in-out;
+				cursor: pointer;
+
+				&.selected {
+					transform: scale(1.3);
+				}
+			}
+		}
+	}
+
+	.content-slider {
+		position: relative;
+		overflow: scroll;
+		height: 100vh;
+		display: grid;
+		grid-template-rows: repeat(5, 100vh);
+	}
+
+	.slider-item {
+		position: relative;
+		height: 100vh;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		margin-right: 15vw;
+		transition: transform 0.5s ease-in-out;
 	}
 </style>

@@ -2,18 +2,21 @@
 	import Opslock from '../assets/opslock.png';
 	import Mycelium from '../assets/mycelium.svg';
 	import Hackathon from '../assets/hackathon.jpeg';
+	import SectionTitle from './SectionTitle.svelte';
 </script>
 
 <div class="container">
+	<SectionTitle>My Work</SectionTitle>
 	<div class="row">
 		<img src={Opslock} alt="Opslock" />
 		<div class="info">
 			<h1>Opslock</h1>
 			<p>
-				As the third hire at <a href="https://www.opslock.com/" target="_blank">Opslock</a>, I
-				helped grow the company and built mission critical parts of the codebase. Later as a tech
-				lead, I led a team of 5 developers to achieve sprint goals and create clean, maintainable
-				code
+				As the third hire at <a href="https://www.opslock.com/" target="_blank" rel="noreferrer"
+					>Opslock</a
+				>, I helped grow the company and built mission critical parts of the codebase. Later as a
+				tech lead, I led a team of 5 developers to achieve sprint goals and create clean,
+				maintainable code
 			</p>
 		</div>
 	</div>
@@ -23,8 +26,10 @@
 		<div class="info">
 			<h1>Mycelium</h1>
 			<p>
-				I helped Mycelium launch the <a href="https://swaps.mycelium.xyz/" target="_blank"
-					>Perpetual Swaps</a
+				I helped Mycelium launch the <a
+					href="https://swaps.mycelium.xyz/"
+					target="_blank"
+					rel="noreferrer">Perpetual Swaps</a
 				> product ($1B+ of trading volume), working across the stack on the smart contracts, web client,
 				and backend infrastructure
 			</p>
