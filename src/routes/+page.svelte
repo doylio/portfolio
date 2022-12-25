@@ -6,6 +6,7 @@
 	import MyWork from './MyWork.svelte';
 	import Contact from './Contact.svelte';
 	import Writing from './Writing.svelte';
+	import Home from './Home.svelte';
 
 	if (browser) {
 		// Fade in title
@@ -73,6 +74,7 @@
 	}
 
 	const navItems = [
+		{ name: 'Home', href: '#home', component: Home },
 		{ name: 'About', href: '#about', component: About },
 		{ name: 'Skills', href: '#skills', component: Skills },
 		{ name: 'My Work', href: '#my-work', component: MyWork },

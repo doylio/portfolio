@@ -81,6 +81,7 @@
 
 		p {
 			margin: 0;
+			font-family: Cairo, sans-serif;
 
 			a {
 				color: var(--link);

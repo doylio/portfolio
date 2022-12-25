@@ -12,7 +12,8 @@
 		text-transform: uppercase;
 		letter-spacing: 0.1em;
 		line-height: 1rem;
-		font-family: Arial, Helvetica, sans-serif;
+		font-family: 'Cairo', sans-serif;
+		// font-family: Arial, Helvetica, sans-serif;
 
 		&::before,
 		&::after {
