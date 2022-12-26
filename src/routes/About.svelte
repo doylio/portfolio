@@ -5,17 +5,17 @@
 	import SectionTitle from './SectionTitle.svelte';
 </script>
 
-<div>
-	<SectionTitle>About</SectionTitle>
+<div class="container">
+	<SectionTitle>About Me</SectionTitle>
 
 	<div class="row reverse">
 		<div class="image">
 			<img src={Tech} alt="Man sitting at a laptop" />
 		</div>
 		<p>
-			I'm a self-taught full stack developer. In the fast paced world of software, I believe that
-			being able to learn new skills quickly is a key to success. I haven't found a technology that
-			I've been unable to pick up and use in a matter of days.
+			I'm a self-taught developer. In the fast paced world of software, I believe that being able to
+			learn new skills quickly is a key to success. I haven't found a technology that I've been
+			unable to pick up and use in a matter of days
 		</p>
 	</div>
 
@@ -26,7 +26,7 @@
 		<p>
 			I love visiting new places and learning about other cultures. After graduating from the
 			University of Toronto, I spent a year teaching English in China and backpacking around Asia. I
-			currently live in Montreal, where I am learning French.
+			currently live in Montreal, where I am learning French
 		</p>
 	</div>
 
@@ -43,6 +43,9 @@
 </div>
 
 <style lang="scss">
+	.container {
+		position: relative;
+	}
 	.row {
 		display: flex;
 		flex-direction: row;
@@ -52,14 +55,15 @@
 	}
 
 	.image {
-		width: 100px;
-		height: 100px;
+		--img-size: 150px;
+		width: var(--img-size);
+		height: var(--img-size);
 		overflow: hidden;
 		border-radius: 50%;
 
 		img {
-			width: 100px;
-			height: 100px;
+			width: var(--img-size);
+			height: var(--img-size);
 			object-fit: cover;
 		}
 	}
@@ -67,10 +71,33 @@
 	p {
 		flex: 1;
 		line-height: 1.5;
-		font-family: 'Cairo', sans-serif;
+		font-size: 1.3rem;
 	}
 
 	.reverse {
 		flex-direction: row-reverse;
+	}
+
+	@media (max-width: 768px) {
+		.row {
+			gap: 1rem;
+		}
+		.image {
+			--img-size: 125px;
+		}
+
+		p {
+			font-size: 1rem;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.image {
+			--img-size: 100px;
+		}
+
+		p {
+			font-size: 0.8rem;
+		}
 	}
 </style>

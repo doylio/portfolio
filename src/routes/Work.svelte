@@ -7,7 +7,7 @@
 
 <div class="container">
 	<SectionTitle>My Work</SectionTitle>
-	<div class="row">
+	<div class="section">
 		<img src={Opslock} alt="Opslock" />
 		<div class="info">
 			<h1>Opslock</h1>
@@ -21,7 +21,7 @@
 		</div>
 	</div>
 
-	<div class="row reverse">
+	<div class="section reverse">
 		<img src={Mycelium} alt="Mycelium" />
 		<div class="info">
 			<h1>Mycelium</h1>
@@ -36,7 +36,7 @@
 		</div>
 	</div>
 
-	<div class="row">
+	<div class="section">
 		<img src={Hackathon} alt="Me at the ETH Toronto Hackathon" />
 		<div class="info">
 			<h1>Hackathons</h1>
@@ -55,9 +55,8 @@
 		display: flex;
 		flex-direction: column;
 		align-items: stretch;
-		padding: 2rem;
 	}
-	.row {
+	.section {
 		display: flex;
 		align-items: center;
 		margin-bottom: 2rem;
@@ -69,28 +68,47 @@
 		}
 
 		img {
-			height: 150px;
+			height: clamp(100px, 18vw, 200px);
 			border-radius: 6px;
 		}
 	}
 
-	.row .info {
+	.section .info {
 		h1 {
 			margin: 0.5rem 0;
+			font-size: clamp(1.2rem, 3vw, 2rem);
 		}
 
-		p {
+		p,
+		ul {
 			margin: 0;
-			font-family: Cairo, sans-serif;
-
-			a {
-				color: var(--link);
-				text-decoration: underline;
-			}
+			font-size: clamp(0.8rem, 1.5vw, 1rem);
+			line-height: clamp(1rem, 2vw, 1.5rem);
 		}
 
 		ul {
-			margin: 0;
+			padding-inline-start: 20px;
+		}
+
+		a {
+			color: var(--link);
+			text-decoration: underline;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.section {
+			flex-direction: column-reverse;
+			align-items: stretch;
+
+			&.reverse {
+				flex-direction: column-reverse;
+			}
+
+			img {
+				height: auto;
+				margin-bottom: 1rem;
+			}
 		}
 	}
 </style>

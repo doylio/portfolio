@@ -1,5 +1,5 @@
 <script lang="ts">
-	import ReactApolloImage from '../assets/react-apollo.jpeg';
+	import ReactApolloImage from '../assets/apollo.png';
 	import LaptopImage from '../assets/laptop.jpeg';
 	import NftImage from '../assets/nft.jpeg';
 	import SectionTitle from './SectionTitle.svelte';
@@ -33,7 +33,7 @@
 </script>
 
 <div>
-	<SectionTitle>Writing</SectionTitle>
+	<SectionTitle>My Writing</SectionTitle>
 	<div class="articles">
 		{#each articles as article}
 			<a class="article" href={article.url} target="__blank">
@@ -76,6 +76,7 @@
 			height: 140px;
 			object-fit: cover;
 			border-radius: 0.5rem;
+			background-color: #fff;
 		}
 
 		&:hover {
@@ -93,6 +94,7 @@
 			}
 
 			.blurb {
+				font-size: 0.9rem;
 				overflow: hidden;
 				display: -webkit-box;
 				-webkit-line-clamp: 3;
@@ -103,6 +105,33 @@
 		.date {
 			font-size: 0.8rem;
 			color: var(--alt-text-light);
+		}
+	}
+
+	@media screen and (max-width: 480px) {
+		.article {
+			height: 100px;
+
+			img {
+				width: 80px;
+				height: 80px;
+			}
+
+			.article-info {
+				h3 {
+					font-size: 1rem;
+				}
+
+				.date {
+					font-size: 0.7rem;
+				}
+
+				.blurb {
+					font-size: 0.8rem;
+					line-height: 1.2rem;
+					-webkit-line-clamp: 2;
+				}
+			}
 		}
 	}
 </style>

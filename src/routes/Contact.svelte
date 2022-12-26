@@ -36,7 +36,7 @@
 </script>
 
 <div class="container">
-	<SectionTitle>Contact</SectionTitle>
+	<SectionTitle>Contact Me</SectionTitle>
 
 	<div class="button-box">
 		<a class="github" href="https://github.com/doylio" target="_blank" rel="noreferrer">

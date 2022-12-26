@@ -8,7 +8,7 @@
 	import MongoLogo from '../assets/mongodb.svg';
 	import PostgresLogo from '../assets/Postgresql-logo.png';
 	import PythonLogo from '../assets/Python-logo.png';
-	import GitLogo from '../assets/git-logo.png';
+	import GitLogo from '../assets/git-logo.svg';
 	import GoLogo from '../assets/go-logo.png';
 	import GoogleCloudLogo from '../assets/google-cloud-logo.png';
 	import GraphQLLogo from '../assets/graphql-logo.png';
@@ -61,8 +61,8 @@
 	let activeTag = '';
 </script>
 
-<div class="container">
-	<SectionTitle>Skills</SectionTitle>
+<div>
+	<SectionTitle>My Skills</SectionTitle>
 
 	<h3>
 		{#each skillTags as tag}
@@ -91,13 +91,6 @@
 </div>
 
 <style lang="scss">
-	.container {
-		position: absolute;
-		top: 10%;
-		left: 0;
-		width: 100%;
-	}
-
 	h2 {
 		font-size: 1.5rem;
 		color: var(--text-light);
@@ -126,7 +119,7 @@
 		flex-wrap: wrap;
 
 		img {
-			height: calc(4vh + 4vw);
+			height: calc(5vh + 5vw);
 			padding: 10px;
 			transition: transform 0.2s ease-in-out;
 
@@ -147,5 +140,11 @@
 	h1 {
 		font-size: 2.5rem;
 		text-align: center;
+	}
+
+	@media (max-width: 480px) {
+		img {
+			height: 6vw;
+		}
 	}
 </style>

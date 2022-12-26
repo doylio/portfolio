@@ -4,7 +4,7 @@
 
 <style lang="scss">
 	h1 {
-		margin: 40px 0;
+		margin: 50px 0;
 		--text-divider-gap: 1rem;
 		display: flex;
 		align-items: center;
@@ -12,8 +12,6 @@
 		text-transform: uppercase;
 		letter-spacing: 0.1em;
 		line-height: 1rem;
-		font-family: 'Cairo', sans-serif;
-		// font-family: Arial, Helvetica, sans-serif;
 
 		&::before,
 		&::after {

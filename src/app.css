@@ -1,6 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Cairo:wght@300;400&family=Gayathri:wght@400;700&family=Gravitas+One&family=Inter:wght@400;700&family=Roboto+Condensed:wght@400;700&family=Roboto:wght@400;700&family=Share+Tech&family=Share+Tech+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400&family=Gayathri:wght@400;700&family=Roboto:wght@400;700&family=Share+Tech+Mono&display=swap');
+
 :root {
-  font-family: "Gayathri", "sans-serif";
+  font-family: "Cairo", "sans-serif";
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
@@ -16,17 +17,18 @@
 
   --dark: #242424;
 
-  --bg1: rgb(208, 58, 231);
-  --bg2: rgb(238, 133, 29);
 
-  --link: rgb(21, 25, 153);
+  --bg1: #16a085;
+  --bg2: #8e44ad;
+  --cell: #ecf0f1;
+  --action: #2c3e50;
+
+  --link: #ffb142;
   --text-light: rgba(255, 255, 255, 0.87);
   --text-dark: rgba(0, 0, 0, 0.87);
-  --alt-text-light: #666;
+  --alt-text-light: #555;
   --alt-text-dark: #333;
-  --cell: rgb(243, 158, 185);
   --cell-border: #333;
-  --action: rgb(36, 163, 49);
 
 
   --github: #25292E;
@@ -46,7 +48,10 @@
 }
 
 body {
-  animation: background-pan 15s linear infinite;
+  animation: background-pan 25s linear infinite;
   background: linear-gradient(to right, var(--bg1), var(--bg2), var(--bg1));
   background-size: 200%;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
 }
